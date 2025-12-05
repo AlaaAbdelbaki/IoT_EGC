@@ -1,0 +1,25 @@
+{
+  "configurations": [
+    {
+      "name": "Win32",
+      "includePath": [
+        "${workspaceFolder}/**",
+        "C:/Users/Alaa/AppData/Local/Arduino15/packages/**",
+        "C:/Users/Alaa/Documents/Arduino/libraries/**"
+      ],
+      "defines": [
+        "ARDUINO=10819",
+        "ARDUINO_AVR_LEONARDO",
+        "ARDUINO_ARCH_AVR",
+        "__AVR__",
+        "__AVR_ATmega32U4__",
+        "F_CPU=16000000L"
+      ],
+      "compilerPath": "D:/msys64/mingw64/bin/g++.exe",
+      "cStandard": "c11",
+      "cppStandard": "c++17",
+      "intelliSenseMode": "windows-gcc-x64"
+    }
+  ],
+  "version": 4
+}
