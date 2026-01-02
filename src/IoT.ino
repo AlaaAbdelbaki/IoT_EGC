@@ -1,3 +1,11 @@
+/*
+ * Connected Holter - ECG Monitoring System
+ * Firmware for Arduino Leonardo with AD8232 ECG Sensor
+ *
+ * Copyright © 2025 Alaa Abdelbaki & Adil Tiali
+ * All rights reserved.
+ */
+
 #include <TheThingsNetwork.h>
 
 int sensorPin = A0;  // select the input pin for the potentiometer

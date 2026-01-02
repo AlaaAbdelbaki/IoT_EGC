@@ -20,6 +20,75 @@ InfluxDB (Time-Series Storage)
 Grafana (Medical Dashboard)
 ```
 
+### Main Loop Flowchart
+
+```mermaid
+graph TD
+    A["START - Main Loop<br/>10ms Interval"] --> B["Read ECG from A0<br/>Scale: x1023/588"]
+    B --> C{ECG > THRESHOLD<br/>& Not in Refractory?}
+    C -->|No| D["Update Baseline"]
+    C -->|Yes| E["Detect R-Peak"]
+    E --> F["Calculate RR Interval<br/>ms since last peak"]
+    F --> G["Update Adaptive<br/>Refractory Period<br/>30% of RR"]
+    G --> H["Add to RR Array"]
+    D --> I{5-Second Window<br/>Complete?}
+    H --> I
+    I -->|No| J{30-Second Transmission<br/>Timer?}
+    I -->|Yes| K["Calculate Heart Rate<br/>HR = 60000 / avg_RR"]
+    K --> L["Calculate HRV<br/>StdDev of RR intervals"]
+    L --> J
+    J -->|Not Ready| A
+    J -->|Ready| M["Prepare 6-Byte<br/>Payload"]
+    M --> N["Send via LoRaWAN<br/>to TTN"]
+    N --> O["Wait for ACK<br/>~50-200ms"]
+    O --> A
+    style A fill:#e1f5ff
+    style E fill:#ffcdd2
+    style K fill:#c8e6c9
+    style M fill:#fff9c4
+    style N fill:#f8bbd0
+```
+
+### Node-RED Alert Processing
+
+```mermaid
+graph TD
+    A["TTN MQTT Uplink<br/>v3/+/devices/+/up"] --> B["preparation<br/>Extract HR, HRV, Sensor"]
+    B --> C["Store fullData<br/>4 outputs"]
+    C --> D1["UI Gauge<br/>HR"]
+    C --> D2["UI Gauge<br/>HRV"]
+    C --> D3["UI Chart<br/>Time-Series"]
+    C --> D4["check_alerts<br/>Function"]
+    D4 --> E{Alert<br/>Triggered?}
+    E -->|No| F["preparForDB<br/>Write ecg_monitoring"]
+    E -->|Yes| G["Split Alert<br/>2 paths"]
+    G --> H1["Path 1: UI<br/>Toast + Text"]
+    G --> H2["Path 2: Database<br/>prepareAlertForDB"]
+    D4 --> I["Format Email<br/>HTML content"]
+    I --> J["Send via<br/>Gmail SMTP"]
+    H2 --> K["InfluxDB<br/>ecg_alerts"]
+    F --> L["InfluxDB<br/>ecg_monitoring"]
+    K --> M["Grafana<br/>Alert Table"]
+    L --> N["Grafana<br/>Dashboards"]
+    H1 --> O["Node-RED<br/>Dashboard UI"]
+    J --> P["Email Alert<br/>to User"]
+    style A fill:#e3f2fd
+    style E fill:#ffebee
+    style J fill:#fce4ec
+    style K fill:#fff3e0
+    style M fill:#e0f2f1
+```
+
+### Dashboard Screenshots
+
+#### Grafana Dashboard
+
+![Grafana Medical Monitoring Dashboard](screenshots/grafana.png)
+
+#### Node-RED Flow
+
+![Node-RED Data Processing Flow](screenshots/node-red.png)
+
 ## Key Features
 
 - **Real-time ECG Acquisition**: 100 Hz sampling from AD8232 sensor on Arduino Leonardo
@@ -318,3 +387,9 @@ This is a **prototype** system for research and development. For clinical use:
 ✅ Medical-grade dashboard with alerts
 ✅ Email notification system
 ✅ Comprehensive monitoring and debugging capabilities
+
+## Copyright
+
+Copyright © 2025 Alaa Abdelbaki & Adil Tiali
+
+All rights reserved.
