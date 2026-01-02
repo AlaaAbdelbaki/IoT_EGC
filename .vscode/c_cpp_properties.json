@@ -1,25 +1,62 @@
+//
+// !!! WARNING !!! AUTO-GENERATED FILE!
+// PLEASE DO NOT MODIFY IT AND USE "platformio.ini":
+// https://docs.platformio.org/page/projectconf/section_env_build.html#build-flags
+//
 {
-  "configurations": [
-    {
-      "name": "Win32",
-      "includePath": [
-        "${workspaceFolder}/**",
-        "C:/Users/Alaa/AppData/Local/Arduino15/packages/**",
-        "C:/Users/Alaa/Documents/Arduino/libraries/**"
-      ],
-      "defines": [
-        "ARDUINO=10819",
-        "ARDUINO_AVR_LEONARDO",
-        "ARDUINO_ARCH_AVR",
-        "__AVR__",
-        "__AVR_ATmega32U4__",
-        "F_CPU=16000000L"
-      ],
-      "compilerPath": "D:/msys64/mingw64/bin/g++.exe",
-      "cStandard": "c11",
-      "cppStandard": "c++17",
-      "intelliSenseMode": "windows-gcc-x64"
-    }
-  ],
-  "version": 4
+    "configurations": [
+        {
+            "name": "PlatformIO",
+            "includePath": [
+                "D:/Année_2025_2026/ams_projet/src",
+                "D:/Année_2025_2026/ams_projet/.pio/libdeps/leonardo/TheThingsNetwork/src",
+                "C:/Users/Alaa/.platformio/packages/framework-arduino-avr/cores/arduino",
+                "C:/Users/Alaa/.platformio/packages/framework-arduino-avr/variants/leonardo",
+                "C:/Users/Alaa/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
+                "C:/Users/Alaa/.platformio/packages/framework-arduino-avr/libraries/HID/src",
+                "C:/Users/Alaa/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
+                "C:/Users/Alaa/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
+                "C:/Users/Alaa/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
+                ""
+            ],
+            "browse": {
+                "limitSymbolsToIncludedHeaders": true,
+                "path": [
+                    "D:/Année_2025_2026/ams_projet/src",
+                    "D:/Année_2025_2026/ams_projet/.pio/libdeps/leonardo/TheThingsNetwork/src",
+                    "C:/Users/Alaa/.platformio/packages/framework-arduino-avr/cores/arduino",
+                    "C:/Users/Alaa/.platformio/packages/framework-arduino-avr/variants/leonardo",
+                    "C:/Users/Alaa/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
+                    "C:/Users/Alaa/.platformio/packages/framework-arduino-avr/libraries/HID/src",
+                    "C:/Users/Alaa/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
+                    "C:/Users/Alaa/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
+                    "C:/Users/Alaa/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
+                    ""
+                ]
+            },
+            "defines": [
+                "PLATFORMIO=60118",
+                "ARDUINO_AVR_LEONARDO",
+                "ARDUINO_AVR_LEONARDO",
+                "ARDUINO_ARCH_AVR",
+                "F_CPU=16000000L",
+                "ARDUINO_ARCH_AVR",
+                "ARDUINO=10808",
+                "USB_VID=0x2341",
+                "USB_PID=0x8036",
+                "USB_PRODUCT=\"Arduino Leonardo\"",
+                "USB_MANUFACTURER=\"Arduino\"",
+                "__AVR_ATmega32U4__",
+                ""
+            ],
+            "cStandard": "gnu11",
+            "cppStandard": "gnu++11",
+            "compilerPath": "C:/Users/Alaa/.platformio/packages/toolchain-atmelavr/bin/avr-gcc.exe",
+            "compilerArgs": [
+                "-mmcu=atmega32u4",
+                ""
+            ]
+        }
+    ],
+    "version": 4
 }
